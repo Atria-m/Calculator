@@ -42,3 +42,21 @@ function final() {
     resultEl.textContent = "error";
   }
 }
+
+function handleButton(selector, callback) {
+  document.querySelectorAll(selector).forEach((btn) => {
+    btn.addEventListener("click", callback);
+    btn.addEventListener("touchstart", callback, { passive: true });
+  });
+}
+
+handleButton(".item", (e) => {
+  fill(e.target.value);
+});
+
+handleButton("input[value='AC']", () => reset());
+
+handleButton("input[value='C']", () => dlec());
+
+handleButton("input[value='=']", () => final());
+
