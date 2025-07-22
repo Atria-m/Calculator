@@ -14,8 +14,8 @@ if (
 toggle.addEventListener("change", () => {
   document.documentElement.classList.toggle("dark");
 });
-ز;
 
+// calculator js
 const resultEl = document.getElementById("result");
 
 function fill(value) {
@@ -43,20 +43,13 @@ function final() {
   }
 }
 
-function handleButton(selector, callback) {
-  document.querySelectorAll(selector).forEach((btn) => {
-    btn.addEventListener("click", callback);
-    btn.addEventListener("touchstart", callback, { passive: true });
-  });
-}
-
-handleButton(".item", (e) => {
-  fill(e.target.value);
+document.querySelectorAll("input[onclick]").forEach((btn) => {
+  btn.addEventListener(
+    "touchstart",
+    (e) => {
+      e.preventDefault();
+      btn.onclick();
+    },
+    { passive: false }
+  );
 });
-
-handleButton("input[value='AC']", () => reset());
-
-handleButton("input[value='C']", () => dlec());
-
-handleButton("input[value='=']", () => final());
-
