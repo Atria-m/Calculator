@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/tailwind/main.css" />
+    <link rel="stylesheet" href="./src/css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Calculator</title>
+  </head>
+  <body
+    class="min-h-screen pt-20 px-4 transition-colors duration-500 bg-gradient-to-br from-white via-princess to-bluesky dark:from-black dark:via-gray-800 dark:to-darkblue overflow-hidden md:overflow-hidden"
+  >
+    <header
+      class="w-full h-20 flex justify-end items-center px-4 sm:px-8 fixed top-0 left-0 z-50"
+    >
+      <div class="relative">
+        <input type="checkbox" id="themeToggle" class="input hidden" />
+        <label class="toggle" for="themeToggle">
+          <span class="toggle__handler">
+            <span class="crater crater--1"></span>
+            <span class="crater crater--2"></span>
+            <span class="crater crater--3"></span>
+          </span>
+          <span class="star star--1"></span>
+          <span class="star star--2"></span>
+          <span class="star star--3"></span>
+          <span class="star star--4"></span>
+          <span class="star star--5"></span>
+          <span class="star star--6"></span>
+        </label>
+      </div>
+    </header>
+
+    <div
+      class="container-full w-full h-screen flex justify-center items-center pb-20 sm:pb-6 overflow-hidden"
+    >
+      <div class="container mx-auto px-4 max-w-md">
+        <div
+          class="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-6 backdrop-blur-md bg-opacity-80 dark:bg-opacity-80"
+        >
+          <div
+            id="result"
+            class="result overflow-hidden text-right text-4xl font-mono p-4 rounded-xl mb-6 bg-bluesky text-white dark:bg-darkblue dark:text-softblue shadow-inner overflow-x-auto h-[72px]"
+          ></div>
+          <div class="calculator-holder grid grid-cols-4 gap-4">
+            <input
+              type="button"
+              class="item cursor-pointer bg-princess dark:bg-gray-700 text-seafoam dark:text-darkgray font-bold text-xl py-4 rounded-xl shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200"
+              value="AC"
+              onclick="reset()"
+            />
+            <input
+              type="button"
+              class="item cursor-pointer bg-princess dark:bg-gray-700 text-seafoam dark:text-darkgray font-bold text-xl py-4 rounded-xl shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200"
+              value="C"
+              onclick="dlec()"
+            />
+            <input
+              type="button"
+              class="item cursor-pointer bg-princess dark:bg-gray-700 text-seafoam dark:text-darkgray font-bold text-xl py-4 rounded-xl shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200"
+              value="%"
+              onclick="fill(this.value)"
+            />
+            <input
+              type="button"
+              class="item cursor-pointer bg-princess dark:bg-gray-700 text-orchid dark:text-softblue font-bold text-xl py-4 rounded-xl shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200"
+              value="/"
+              onclick="fill(this.value)"
+            />
+            <input
+              type="button"
+              class="item cursor-pointer bg-princess dark:bg-gray-700 text-gray-900 dark:text-white font-bold text-xl py-4 rounded-xl shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200"
+              value="7"
+              onclick="fill(this.value)"
+            />
+            <input
+              type="button"
+              class="item cursor-pointer bg-princess dark:bg-gray-700 text-gray-900 dark:text-white font-bold text-xl py-4 rounded-xl shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200"
+              value="8"
+              onclick="fill(this.value)"
+            />
+            <input
+              type="button"
+              class="item cursor-pointer bg-princess dark:bg-gray-700 text-gray-900 dark:text-white font-bold text-xl py-4 rounded-xl shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200"
+              value="9"
+              onclick="fill(this.value)"
+            />
+            <input
+              type="button"
+              class="item cursor-pointer bg-princess dark:bg-gray-700 text-orchid dark:text-softblue font-bold text-xl py-4 rounded-xl shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200"
+              value="*"
+              onclick="fill(this.value)"
+            />
+            <input
+              type="button"
+              class="item cursor-pointer bg-princess dark:bg-gray-700 text-gray-900 dark:text-white font-bold text-xl py-4 rounded-xl shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200"
+              value="4"
+              onclick="fill(this.value)"
+            />
+            <input
+              type="button"
+              class="item cursor-pointer bg-princess dark:bg-gray-700 text-gray-900 dark:text-white font-bold text-xl py-4 rounded-xl shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200"
+              value="5"
+              onclick="fill(this.value)"
+            />
+            <input
+              type="button"
+              class="item cursor-pointer bg-princess dark:bg-gray-700 text-gray-900 dark:text-white font-bold text-xl py-4 rounded-xl shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200"
+              value="6"
+              onclick="fill(this.value)"
+            />
+            <input
+              type="button"
+              class="item cursor-pointer bg-princess dark:bg-gray-700 text-orchid dark:text-softblue font-bold text-xl py-4 rounded-xl shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200"
+              value="-"
+              onclick="fill(this.value)"
+            />
+            <input
+              type="button"
+              class="item cursor-pointer bg-princess dark:bg-gray-700 text-gray-900 dark:text-white font-bold text-xl py-4 rounded-xl shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200"
+              value="1"
+              onclick="fill(this.value)"
+            />
+            <input
+              type="button"
+              class="item cursor-pointer bg-princess dark:bg-gray-700 text-gray-900 dark:text-white font-bold text-xl py-4 rounded-xl shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200"
+              value="2"
+              onclick="fill(this.value)"
+            />
+            <input
+              type="button"
+              class="item cursor-pointer bg-princess dark:bg-gray-700 text-gray-900 dark:text-white font-bold text-xl py-4 rounded-xl shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200"
+              value="3"
+              onclick="fill(this.value)"
+            />
+            <input
+              type="button"
+              class="item cursor-pointer bg-princess dark:bg-gray-700 text-orchid dark:text-softblue font-bold text-xl py-4 rounded-xl shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200"
+              value="+"
+              onclick="fill(this.value)"
+            />
+            <input
+              type="button"
+              class="item col-span-2 cursor-pointer bg-princess dark:bg-gray-700 text-gray-900 dark:text-white font-bold text-xl py-4 rounded-xl shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200"
+              value="0"
+              onclick="fill(this.value)"
+            />
+            <input
+              type="button"
+              class="item cursor-pointer bg-princess dark:bg-gray-700 text-gray-900 dark:text-white font-bold text-xl py-4 rounded-xl shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200"
+              value="00"
+              onclick="fill(this.value)"
+            />
+            <input
+              type="button"
+              class="item cursor-pointer bg-bluesky text-white hover:bg-blue-400 dark:bg-darkblue dark:hover:bg-blue-500 dark:text-white font-bold text-xl py-4 rounded-xl shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200"
+              value="="
+              onclick="final()"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./src/js/main.js"></script>
+  </body>
+</html>
